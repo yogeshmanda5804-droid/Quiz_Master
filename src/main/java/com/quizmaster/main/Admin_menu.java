@@ -2,6 +2,9 @@ package com.quizmaster.main;
 
 import java.util.Scanner;
 
+import com.util.Consolehelper;
+
+
 public class Admin_menu {
 	Scanner scanner;
 
@@ -10,7 +13,7 @@ public class Admin_menu {
 		boolean exit = false;
 		while (!exit) {
 
-			System.out.println("\n=== Admin Menu ===");
+			Consolehelper.println("\n=== Admin Menu ===");
 			System.out.println("1. Add New Question");
 			System.out.println("2. Edit Question");
 			System.out.println("3. Delete Question");

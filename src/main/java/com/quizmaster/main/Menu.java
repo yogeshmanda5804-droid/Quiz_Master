@@ -2,6 +2,9 @@ package com.quizmaster.main;
 
 import java.util.Scanner;
 
+import com.util.Consolehelper;
+
+
 public class Menu {
 	static Scanner scanner = new Scanner(System.in);
 	static boolean exit = false;
@@ -12,7 +15,7 @@ public class Menu {
 		Admin_menu admin_menu = new Admin_menu(scanner);
 
 		while (!exit) {
-			System.out.println("Welcome to Quiz Based Application");
+			Consolehelper.println("Welcome to Quiz Based Application");
 			System.out.println("1.Student Menu");
 			System.out.println("2.Admin menu");
 			System.out.println("3.Exit");

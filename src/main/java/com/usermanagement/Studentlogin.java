@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 import com.quizmaster.main.Student_menu;
+import com.util.Consolehelper;
 import com.util.dbConnection;
 
 public class Studentlogin {
@@ -25,8 +26,9 @@ public class Studentlogin {
 		password = scanner.next();
 
 		if (checkLogin(Username, password)) {
+			
+			Consolehelper.println(" \u2705 Login successful!");
 			System.out.println("Hello " + name);
-			System.out.println("Login successful!");
 			studentMenu.setIsloggedin(true);
 
 		} else {

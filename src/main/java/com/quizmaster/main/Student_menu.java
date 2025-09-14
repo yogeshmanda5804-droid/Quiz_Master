@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.usermanagement.StudentRegistration;
 import com.usermanagement.Studentlogin;
+import com.util.Consolehelper;
 
 public class Student_menu {
 	Scanner scanner;
@@ -19,7 +20,7 @@ public class Student_menu {
 			boolean exit= false;
 			while (!exit) {
 				
-				System.out.println("\n=== Student Menu ===");
+				Consolehelper.println("\n=== Student Menu ===");
 			    System.out.println("1. Register");
 			    System.out.println("2. Login");
 			    System.out.println("3. Attempt Quiz");
@@ -38,7 +39,7 @@ public class Student_menu {
 			
 				switch (choice) {
 				case 1:	studentRegistration.getsudentinfo();break;
-				case 2:	studentlogin.login(); System.out.println(isloggedin); ;;break;
+				case 2:	studentlogin.login(); System.out.println(isloggedin); break;
 				case 3:	break;
 				case 4:break;
 				case 5:exit=true;	break;
