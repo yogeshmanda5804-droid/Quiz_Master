@@ -1,4 +1,4 @@
-package com.main;
+package com.quizmaster.main;
 
 import java.util.Scanner;
 
@@ -7,13 +7,14 @@ import com.usermanagement.Studentlogin;
 
 public class Student_menu {
 	Scanner scanner;
-public Student_menu(Scanner scanner) {
-		this.scanner = scanner;
-	}
+	boolean isloggedin ;
+	//String string;
+	//public static boolean flag;
+	
 	public void showstudenmenu() throws Exception {
 		
-			StudentRegistration studentRegistration=new StudentRegistration(scanner);
-			Studentlogin studentlogin=new Studentlogin();
+		  Studentlogin studentlogin = new Studentlogin(scanner, this);  // pass 'this' to login
+		    StudentRegistration studentRegistration = new StudentRegistration(scanner);
 
 			boolean exit= false;
 			while (!exit) {
@@ -34,9 +35,10 @@ public Student_menu(Scanner scanner) {
 					System.out.println("Invalid input! Please enter a number.");
 		            continue; 
 				}  
+			
 				switch (choice) {
 				case 1:	studentRegistration.getsudentinfo();break;
-				case 2:	studentlogin.login();break;
+				case 2:	studentlogin.login(); System.out.println(isloggedin); ;;break;
 				case 3:	break;
 				case 4:break;
 				case 5:exit=true;	break;
@@ -51,5 +53,20 @@ public Student_menu(Scanner scanner) {
 	
 		
 	}
+	
+
+
+	public void setIsloggedin(boolean isloggedin) {
+		this.isloggedin = isloggedin;
+	}
+
+
+public Student_menu(Scanner scanner) {
+		this.scanner = scanner;
+	}
+
+
+
+
 	
 }
