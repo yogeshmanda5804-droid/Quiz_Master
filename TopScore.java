@@ -11,22 +11,23 @@ package com.quizmaster.score;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashMap;
+import java.util.Map;
 import com.quizmaster.model.ScoreRecord;
 import com.quizmaster.model.Student;
 import com.quizmaster.util.DatabaseConnection;
 
 public class TopScore {
 
-	public ScoreRecord getTopScore(){
+	public Map<Student,ScoreRecord> getTopScore(){
 		ScoreRecord scoreRecord = new ScoreRecord();
+		Student student=new Student();
+		Map<Student, ScoreRecord> map=new HashMap<Student, ScoreRecord>();
 		Connection con = null;
 		try {
 			
 			con = DatabaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("select * from score where total_score=(select MAX(total_score) from score");
+			PreparedStatement ps = con.prepareStatement("select * from score,student_registration where total_score=(select MAX(total_score) from score) and student_registration.id=score.student_id");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) { // true, if return false
 
@@ -34,22 +35,32 @@ public class TopScore {
 				scoreRecord.setStudentId(rs.getInt("student_id"));
 				scoreRecord.setTotalScore(rs.getInt("total_score"));
 				scoreRecord.setGrade(rs.getString("grade"));
+				student.setId(rs.getInt("id"));
+				student.setFirstName(rs.getString("firstname"));
+				student.setLastName(rs.getString("lastname"));
+				map.put(student, scoreRecord);
 				
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		return scoreRecord;
+		return map;
 		
 	}
 
 
 	public void viewTopScore() {
 		
-		ScoreRecord record=getTopScore();
-		Student s=new Student();
-		
-		System.out.println(s.getFirstName());
+		 Map<Student,ScoreRecord> topScore=getTopScore();
+		 
+		 for (Map.Entry<Student, ScoreRecord> entry : topScore.entrySet()) {
+			Student key = entry.getKey();
+			ScoreRecord val = entry.getValue();
+			
+			System.out.println("Name of the topper Student: "+key.getFirstName()+" "+key.getLastName()+"\nScore: "+val.getTotalScore()+"\nGrade: "+val.getGrade());
+			
+		}
+		 
 	}
 }
