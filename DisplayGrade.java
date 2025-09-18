@@ -54,21 +54,39 @@ public class DisplayGrade {
 		ScoreRecord scoreRecord = getScoreByStudentId(StudID);
 		int score = scoreRecord.getTotalScore();
 
-		computeGrade(score);
+		String grade = computeGrade(score);
+	    String feedback = feedbackForGrade(grade);
 
+	    System.out.println("\n=== Quiz Result ===");
+	    System.out.println("Your Score: " + score + "/10");
+	    System.out.println("Grade: " + grade);
+	    System.out.println("Feedback: " + feedback);
 		scanner.close();
 	}
 
-	private static void computeGrade(int score) {
+	static String computeGrade(int score) {
 		System.out.println("Your are score is:" + score);
 		if (score >= 8) {
-			System.out.println("Grade A – \"Excellent\"");
-			;
+			return "A";
+			//System.out.println("Grade A – \"Excellent\"");
+			
 		} else if (score >= 5) {
-			System.out.println("Grade B – \"Good\"");
+			return "B";
+			//System.out.println("Grade B – \"Good\"");
 		} else {
-			System.out.println("Grade C – \"Needs Improvement\"");
+			return "C";
+			//System.out.println("Grade C – \"Needs Improvement\"");
 		}
+	}
+	
+	static String feedbackForGrade(String grade) {
+		switch (grade) {
+        case "A": return "Excellent";
+        case "B": return "Good";
+        default:  return "Needs Improvement";
+    }
+		
+		
 	}
 
 }
