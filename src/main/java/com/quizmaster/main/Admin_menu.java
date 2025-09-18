@@ -42,6 +42,11 @@ public class Admin_menu {
 			case 4:
 				break;
 			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				
 				exit = true;
 				break;
 

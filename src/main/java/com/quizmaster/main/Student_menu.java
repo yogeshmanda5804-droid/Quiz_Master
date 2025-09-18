@@ -25,7 +25,8 @@ public class Student_menu {
 			    System.out.println("2. Login");
 			    System.out.println("3. Attempt Quiz");
 			    System.out.println("4. View My Score");
-			    System.out.println("5. Exit to Main Menu");
+			    System.out.println("5. Display Summery");
+			    System.out.println("6. Exit to Main Menu");
 			    System.out.print("Enter your choice: ");
 				String input =scanner.next();
 				int choice = -1;
@@ -42,8 +43,8 @@ public class Student_menu {
 				case 2:	studentlogin.login(); System.out.println(isloggedin); break;
 				case 3:	break;
 				case 4:break;
-				case 5:exit=true;	break;
-					
+				case 5:	break;
+				case 6:exit=true;	break;	
 
 				default:System.out.println("Invalid Choice Try Again");
 					break;
