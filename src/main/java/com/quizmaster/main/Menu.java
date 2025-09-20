@@ -42,6 +42,7 @@ public class Menu {
 				break;
 			default:
 				System.out.println("Invalid Choice Try Again");
+                System.out.println("Invalid Choice Try Again");
 				break;
 			}
 
